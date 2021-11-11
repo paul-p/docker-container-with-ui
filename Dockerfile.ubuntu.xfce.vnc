@@ -22,7 +22,7 @@ ENV HOME=/headless \
     VNC_PW=vncpassword \
     VNC_VIEW_ONLY=false
 
-RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
+# RUN sed -i 's/# deb/deb/g' /etc/apt/sources.list
 
 # Install systemd
 RUN apt-get update \
