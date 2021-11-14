@@ -33,7 +33,7 @@ if [ "$ACTION" = "2" ]; then
     echo "Construction de l'image ..."
     docker build -t $VIRTUAL_HOST_IMAGE_NAME .
     echo "Démarrage du poste virtuel..."
-    docker run -d --name $VIRTUAL_HOST_CONTAINER_NAME -v /sys/fs/cgroup:/sys/fs/cgroup:ro --expose 22 $VIRTUAL_HOST_IMAGE_NAME
+    docker run -d --name $VIRTUAL_HOST_CONTAINER_NAME -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --expose 22 $VIRTUAL_HOST_IMAGE_NAME
     echo "Ajout du compte utilisateur..."s
     docker exec -t $VIRTUAL_HOST_CONTAINER_NAME /dockerstartup/createUser.sh $GUEST_USERNAME $GUEST_PASSWORD
     echo "Le poste virtuel est maintenant démarré et expose un port SSH sur cette adresse: $(docker inspect $VIRTUAL_HOST_CONTAINER_NAME --format '{{.NetworkSettings.Networks.bridge.IPAddress}}'):22"
@@ -41,6 +41,6 @@ fi
 
 if [ "$ACTION" = "4" ]; then
     echo "Démarrage du poste virtuel"
-    docker run -d --name $VIRTUAL_HOST_CONTAINER_NAME -v /sys/fs/cgroup:/sys/fs/cgroup:ro --expose 22 $VIRTUAL_HOST_IMAGE_NAME
+    docker run -d --name $VIRTUAL_HOST_CONTAINER_NAME -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged --expose 22 $VIRTUAL_HOST_IMAGE_NAME
     echo "Le poste virtuel est maintenant démarré et expose un port SSH sur cette adresse: $(docker inspect $VIRTUAL_HOST_CONTAINER_NAME --format '{{.NetworkSettings.Networks.bridge.IPAddress}}'):22"
 fi

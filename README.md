@@ -17,6 +17,10 @@ It contains
 ## How I tested it
 On ubuntu 18.04
 
+## Security
+Warning, this docker container is runned with the [`privileged option`](https://www.educba.com/docker-privileged/). So, remind the container is not well isolated from the host.
+This is needed to let the container reach a graphic session.
+
 ## How to run it
 First, you need to install docker
 ```
