@@ -15,7 +15,7 @@ It contains
 * An SSH serveur which accepts authentication by password
 
 ## How I tested it
-On ubuntu 18.04
+On Ubuntu 18.04 and Fedora 34
 
 ## Security
 Warning, this docker container is runned with the [`privileged option`](https://www.educba.com/docker-privileged/). So, remind the container is not well isolated from the host.
@@ -28,8 +28,8 @@ sudo apt-get install docker.io
 ```
 Then, just clone the project and start the boostrap.sh script
 ```
-git clone -b main https://github.com/paul-p/docker-headless-vnc-container.git
-cd docker-headless-vnc-container.git
+git clone -b main https://github.com/paul-p/docker-container-with-ui.git
+cd docker-container-with-ui
 ./bootstrap.sh
 ```
 
